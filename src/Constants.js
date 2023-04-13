@@ -1,0 +1,1 @@
+export const API_KEY = "UPDATE WITH REAL API_KEY"

@@ -3,11 +3,11 @@ import React from 'react'
 import { deviceHeight, deviceWidth } from './Dimensions'
 import { TouchableOpacity } from 'react-native'
 
-export default function Cards({ name, image }) {
+export default function Cards({ name, image, navigation }) {
     return (
-        <TouchableOpacity 
-        style={{ marginHorizontal: 10 }}
-        onPress={()=>{}}
+        <TouchableOpacity
+            style={{ marginHorizontal: 10 }}
+            onPress={() => navigation.navigate('Details', { name })}
         >
             <ImageBackground source={image}
                 style={{ height: deviceHeight / 5, width: deviceWidth / 2 - 50 }}

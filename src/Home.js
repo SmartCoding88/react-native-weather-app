@@ -11,30 +11,30 @@ import { deviceHeight, deviceWidth } from './Dimensions'
 import Icon from 'react-native-vector-icons/Ionicons'
 import Cards from './Cards';
 
-export default function Home() {
+export default function Home(props) {
 
   const [city, setCity] = useState('');
 
   const cities = [
     {
       name: "New Delhi",
-      image:  require('../assets/images/image3.jpg')
+      image: require('../assets/images/image3.jpg')
     },
     {
       name: "New York",
-      image:  require('../assets/images/image4.jpg')
+      image: require('../assets/images/image4.jpg')
     },
     {
       name: "London",
-      image:  require('../assets/images/image5.jpg')
+      image: require('../assets/images/image5.jpg')
     },
     {
       name: "San Francisco",
-      image:  require('../assets/images/image6.jpg')
+      image: require('../assets/images/image6.jpg')
     },
     {
       name: "New Jersey",
-      image:  require('../assets/images/image7.jpg')
+      image: require('../assets/images/image7.jpg')
     }
   ];
 
@@ -68,35 +68,36 @@ export default function Home() {
 
           <View style={{
             flexDirection: 'row',
-            alignItems: 'center', justifyContent: 'space-between',
+            alignItems: 'center',
+            justifyContent: 'space-between',
             borderRadius: 50,
             borderWidth: 1,
             borderColor: 'white',
             marginTop: 10,
             paddingHorizontal: 10
           }}>
-            <TextInput 
-              placeholder='Search City' 
+            <TextInput
+              placeholder='Search City'
               placeholderTextColor="white"
               value={city}
               onChangeText={(val) => setCity(val)}
-              style={{ paddingHorizontal: 10, color: 'white', fontSize: 16 }} 
-              />
-            <TouchableOpacity onPress={() => { }}>
+              style={{ paddingHorizontal: 10, color: 'white', fontSize: 16 }}
+            />
+            <TouchableOpacity onPress={() => props.navigation.navigate('Details', { name: city })}>
               <Icon name="search" size={22} color="white" />
             </TouchableOpacity>
           </View>
 
-          <Text style={{ 
-            color: 'white', 
-            fontSize: 22, 
+          <Text style={{
+            color: 'white',
+            fontSize: 22,
             paddingHorizontal: 10,
             paddingHorizontal: 10,
             marginTop: 100,
-            marginBottom: 20 
-            }}>My Locations</Text>
-          <FlatList horizontal data={cities} renderItem={({item})=> (
-            <Cards name={item.name} image={item.image} />
+            marginBottom: 20
+          }}>My Locations</Text>
+          <FlatList horizontal data={cities} renderItem={({ item }) => (
+            <Cards name={item.name} image={item.image} navigation={props.navigation} />
           )} />
         </View>
       </View>
